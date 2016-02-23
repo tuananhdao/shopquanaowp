@@ -1,7 +1,7 @@
 /*
 Theme Name: Shop quan ao
 Theme URI: https://wordpress.org/
-Author: Dao Tuan Anh
+Author: Tuan Anh Dao
 Author URI: https://wordpress.org/
 Description: Simple WooCommerce Template
 Version: 1.0
@@ -12,3 +12,29 @@ Text Domain: shopquanao
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
+
+/* Font Imports */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Playfair Display'), local('PlayfairDisplay-Regular'), url(fonts/PlayfairDisplay-Regular.ttf) format('ttf');
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Playfair Display'), local('PlayfairDisplay-Bold'), url(fonts/PlayfairDisplay-Bold.ttf) format('ttf');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Raleway'), local('Raleway-Regular'), url(fonts/Raleway-Regular.ttf) format('ttf');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Raleway'), local('Raleway-SemiBold'), url(fonts/Raleway-SemiBold.ttf) format('ttf');
+}
