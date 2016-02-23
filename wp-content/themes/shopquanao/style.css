@@ -10,31 +10,72 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: shopquanao
 
 This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned with others.
 */
 
 /* Font Imports */
-@font-face {
-  font-family: 'Playfair Display';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Playfair Display'), local('PlayfairDisplay-Regular'), url(fonts/PlayfairDisplay-Regular.ttf) format('ttf');
+/* common */
+body, html {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+	margin: 0;
+	padding: 0;
+	color: #2d2d2d;
 }
-@font-face {
-  font-family: 'Playfair Display';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Playfair Display'), local('PlayfairDisplay-Bold'), url(fonts/PlayfairDisplay-Bold.ttf) format('ttf');
+.raleway-regular {
+	font-family: 'Raleway', serif;
+	font-weight: 400;
 }
-@font-face {
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Raleway'), local('Raleway-Regular'), url(fonts/Raleway-Regular.ttf) format('ttf');
+.raleway-semibold {
+	font-family: 'Raleway', serif;
+	font-weight: 700;
 }
-@font-face {
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Raleway'), local('Raleway-SemiBold'), url(fonts/Raleway-SemiBold.ttf) format('ttf');
+.fairplay-regular {
+	font-family: 'Playfair Display', serif;
+	font-weight: 400;
+}
+.fairplay-bold {
+	font-family: 'Playfair Display', serif;
+	font-weight: 700;
+}
+.hidden {
+	display: none;
+}
+
+h1.site-title {
+	margin: 18px 12px;
+}
+/* Navbar extra css */
+@media (min-width: 768px) {
+    .navbar .navbar-nav {
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+    }
+
+    .navbar .navbar-collapse {
+        text-align: center;
+    }
+}
+
+.navbar-default .navbar-nav .menu-item>a {
+	text-transform: uppercase;
+	font-family: 'Raleway', serif;
+	font-weight: 600;
+	font-size: 16px;
+	color: #2d2d2d;
+	padding: 30px 15px;
+}
+
+.navbar-default .navbar-toggle {
+	border-radius: 50%;
+	padding: 17px 14px;
+	margin-top: 18px;
+}
+.navbar-toggle .icon-bar+.icon-bar {
+	margin-top: 3px;
+}
+.navbar-toggle .icon-bar {
+	width: 18px;
+	color: #2d2d2d;
 }
