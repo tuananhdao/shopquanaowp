@@ -34,6 +34,8 @@ function shopquanao_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menu( 'primary', __( 'Primary Menu' ) );
+	register_nav_menu( 'footer-menu-1', __( 'Footer Menu 1' ) );
+	register_nav_menu( 'footer-menu-2', __( 'Footer Menu 2' ) );
 
 	// This theme uses a custom image size for featured images, displayed on "standard" posts.
 	add_theme_support( 'post-thumbnails' );
@@ -269,12 +271,83 @@ if ( ! function_exists( 'is_woocommerce_activated' ) ) {
 	}
 }
 
-if ( ! function_exists( 'storefront_cart_link' ) ) {
-	function storefront_cart_link() {
+if ( ! function_exists( 'shopquanao_cart_link' ) ) {
+	function shopquanao_cart_link() {
 		?>
-			<a class="cart-contents" href="<?php echo esc_url( WC()->cart->get_cart_url() ); ?>" title="<?php _e( 'View your shopping cart', 'storefront' ); ?>">
-				<span class="amount"><?php echo wp_kses_data( WC()->cart->get_cart_subtotal() ); ?></span> <span class="count"><?php echo wp_kses_data( sprintf( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count(), 'storefront' ), WC()->cart->get_cart_contents_count() ) );?></span>
+			<a class="cart-contents" href="<?php echo esc_url( WC()->cart->get_cart_url() ); ?>" title="<?php _e( 'View your shopping cart'); ?>">
+				<span class="amount"><?php //echo wp_kses_data( WC()->cart->get_cart_subtotal() ); ?></span> <span class="count"><?php echo wp_kses_data( sprintf( _n( '%d', '%d', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ) );?></span>
 			</a>
 		<?php
 	}
 }
+
+/*
+ * For the Theme Setting Page
+ */
+function theme_settings_page(){
+	?>
+	    <div class="wrap">
+	    <h1>Theme Panel</h1>
+	    <form method="post" action="options.php">
+	        <?php
+	            settings_fields("social-config-section");
+	            do_settings_sections("theme-options");      
+	            submit_button(); 
+	        ?>          
+	    </form>
+		</div>
+	<?php
+}
+function add_theme_menu_item()
+{
+	add_menu_page("Theme Options", "Theme Options", "manage_options", "theme-panel", "theme_settings_page", null, 63);
+}
+add_action("admin_menu", "add_theme_menu_item");
+function display_twitter_element()
+{
+	?>
+    	<input type="text" name="twitter_url" id="twitter_url" value="<?php echo get_option('twitter_url'); ?>" />
+    <?php
+}
+function display_facebook_element()
+{
+	?>
+    	<input type="text" name="facebook_url" id="facebook_url" value="<?php echo get_option('facebook_url'); ?>" />
+    <?php
+}
+function display_instagram_element()
+{
+	?>
+		<input type="text" name="instagram_url" id="instagram_url" value="<?php echo get_option('instagram_url'); ?>" />
+	<?php
+}
+function display_pinterest_element()
+{
+	?>
+		<input type="text" name="pinterest_url" id="pinterest_url" value="<?php echo get_option('pinterest_url'); ?>" />
+	<?php
+}
+function display_googleplus_element()
+{
+	?>
+		<input type="text" name="googleplus_url" id="googleplus_url" value="<?php echo get_option('googleplus_url'); ?>" />
+	<?php
+}
+function display_theme_panel_fields()
+{
+	add_settings_section("social-config-section", "All Settings", null, "theme-options");
+	
+	add_settings_field("facebook_url", "Facebook Profile Url", "display_facebook_element", "theme-options", "social-config-section");
+	add_settings_field("twitter_url", "Twitter Profile Url", "display_twitter_element", "theme-options", "social-config-section");
+    add_settings_field("instagram_url", "Instagram Profile Url", "display_instagram_element", "theme-options", "social-config-section");
+    add_settings_field("pinterest_url", "Pinterest Profile Url", "display_pinterest_element", "theme-options", "social-config-section");
+    add_settings_field("googleplus_url", "Google Plus Profile Url", "display_googleplus_element", "theme-options", "social-config-section");
+
+    register_setting("social-config-section", "facebook_url");
+	register_setting("social-config-section", "twitter_url");
+	register_setting("social-config-section", "instagram_url");
+	register_setting("social-config-section", "pinterest_url");
+	register_setting("social-config-section", "googleplus_url");
+}
+
+add_action("admin_init", "display_theme_panel_fields");

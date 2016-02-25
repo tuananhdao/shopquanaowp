@@ -36,56 +36,54 @@
 	<div id="header">
 		
 		<nav class="navbar navbar-default">
-		  <div class="container-fluid">
+			<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			  </button>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>" src="<?php echo get_template_directory_uri(); ?>/logo.png" id="site-logo"/></a></h1>
-				<h2 class="site-description hidden"><?php bloginfo( 'description' ); ?></h2>
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div id="cart">
+						<?php
+							if ( is_woocommerce_activated() ) {
+							if ( is_cart() ) {
+								$class = 'current-menu-item';
+							} else {
+								$class = '';
+							}
+						?>
+							<ul class="site-header-cart menu">
+								<li class="<?php echo esc_attr( $class ); ?>">
+									<?php shopquanao_cart_link(); ?>
+								</li>
+								<li>
+									<?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
+								</li>
+							</ul>
+						<?php
+						} ?>
+					</div>
+					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>" src="<?php echo get_template_directory_uri(); ?>/logo.png" id="site-logo"/></a></h1>
+					<h2 class="site-description hidden"><?php bloginfo( 'description' ); ?></h2>
+				</div>
+				
+				<?php
+					wp_nav_menu( array(
+						'menu'              => 'primary',
+						'theme_location'    => 'primary',
+						'depth'             => 2,
+						'container'         => 'div',
+						'container_class'   => 'collapse navbar-collapse',
+						'container_id'      => 'bs-example-navbar-collapse-1',
+						'menu_class'        => 'nav navbar-nav',
+						'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+						'walker'            => new wp_bootstrap_navwalker())
+					);
+				?>
 			</div>
-			
-			<?php
-				wp_nav_menu( array(
-					'menu'              => 'primary',
-					'theme_location'    => 'primary',
-					'depth'             => 2,
-					'container'         => 'div',
-					'container_class'   => 'collapse navbar-collapse',
-					'container_id'      => 'bs-example-navbar-collapse-1',
-					'menu_class'        => 'nav navbar-nav',
-					'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-					'walker'            => new wp_bootstrap_navwalker())
-				);
-			?>
-			
-		  </div>
 		</nav>
-
-		<div id="cart">
-		<?php
-			if ( is_woocommerce_activated() ) {
-			if ( is_cart() ) {
-				$class = 'current-menu-item';
-			} else {
-				$class = '';
-			}
-		?>
-			<ul class="site-header-cart menu">
-				<li class="<?php echo esc_attr( $class ); ?>">
-					<?php storefront_cart_link(); ?>
-				</li>
-				<li>
-					<?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
-				</li>
-			</ul>
-		<?php
-		} ?>
-		</div>
 	</div>
 
 	<div id="main" class="wrapper">

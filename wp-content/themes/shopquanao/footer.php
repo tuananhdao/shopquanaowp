@@ -10,12 +10,24 @@
  */
 ?>
 	</div><!-- #main .wrapper -->
-	<footer id="colophon" role="contentinfo">
-		<div class="site-info">
-			<?php do_action( 'twentytwelve_credits' ); ?>
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentytwelve' ) ); ?>" title="<?php esc_attr_e( 'Semantic Personal Publishing Platform', 'twentytwelve' ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentytwelve' ), 'WordPress' ); ?></a>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+	<div id="footer" role="contentinfo">
+		<div id="footer-menu-1" class="footer-menu"><?php wp_nav_menu( array( 'menu' => 'footer-menu-1' ) ); ?></div>
+		<div id="footer-menu-2" class="footer-menu"><?php wp_nav_menu( array( 'menu' => 'footer-menu-2' ) ); ?></div>
+		<div id="footer-info" class="fairplay-regular">
+			<div class="first-line">Ⓒ2015 - badcdcdcdcđ<br />
+			bdbdvdvdvdvd & kđjfkjdf</div>
+			<div class="second-line fairplay-bold">0123-456-789, info@niteco.se</div>
+			<div class="third-line">USA, Sanfrancisco<br />1575 Djfjdm nnmnsdbfns kisjdf hù jbdf</div>
+		</div>
+		<div id="social-links" class="footer-menu">
+			<a target="_blank" class="social-link facebook raleway-semibold" href="<?php echo get_option('facebook_url'); ?>"><span>Facebook</span></a>
+			<a target="_blank" class="social-link twitter raleway-semibold" href="<?php echo get_option('twitter_url'); ?>"><span>Twitter</span></a>
+			<a target="_blank" class="social-link instagram raleway-semibold" href="<?php echo get_option('instagram_url'); ?>"><span>Instagram</span></a>
+			<a target="_blank" class="social-link pinterest raleway-semibold" href="<?php echo get_option('pinterest_url'); ?>"><span>Pinterest</span></a>
+			<a target="_blank" class="social-link googleplus raleway-semibold" href="<?php echo get_option('googleplus_url'); ?>"><span>Google+</span></a>
+		</div>
+		<div class="clear"></div>
+	</div><!-- #colophon -->
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

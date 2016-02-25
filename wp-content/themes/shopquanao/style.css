@@ -14,6 +14,16 @@ This theme, like WordPress, is licensed under the GPL.
 
 /* Font Imports */
 /* common */
+html {
+	overflow: -moz-scrollbars-vertical; 
+	overflow-y: scroll;
+}
+div {
+	max-width: 100%;
+}
+img {
+	max-width: 100%;
+}
 body, html {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size: 12px;
@@ -22,13 +32,29 @@ body, html {
 	padding: 0;
 	color: #2d2d2d;
 }
+ul, li, ol {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+a:hover, a:active, a:focus {
+	text-decoration: none;
+	color: inherit;
+}
+.clear {
+	clear: both;
+	height: 0;
+}
+.clear:after {
+	content: '';
+}
 .raleway-regular {
 	font-family: 'Raleway', serif;
 	font-weight: 400;
 }
 .raleway-semibold {
 	font-family: 'Raleway', serif;
-	font-weight: 700;
+	font-weight: 600;
 }
 .fairplay-regular {
 	font-family: 'Playfair Display', serif;
@@ -46,18 +72,165 @@ h1.site-title {
 	margin: 18px 12px;
 }
 /* Navbar extra css */
+.navbar-toggle {
+	margin-right: -11px;
+}
+#cart {
+	right: 73px;
+	position: absolute;
+	border: 1px solid #ddd;
+	border-radius: 50%;
+	width: 48px;
+	height: 48px;
+	display: block;
+	cursor: pointer;
+	top: 19px;
+}
+#cart .widget_shopping_cart {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    min-width: 181px;
+    background: #fff;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 3px 2px 16px #888888;
+	z-index: 99999;
+}
+#cart .cart-contents span.count {
+	display: block;
+	background: #e2574c;
+	border-radius: 50%;
+	color: #fff;
+	font-weight: bold;
+	position: absolute;
+	right: -4px;
+	top: -4px;
+	width: 19px;
+	height: 19px;
+	line-height: 19px;
+	text-align: center;
+}
+#cart a.cart-contents {
+	display: block;
+	width: 48px;
+	height: 48px;
+	top: 0;
+	right: 0;
+	position: absolute;
+	background: url(images/basket.png) no-repeat center center transparent;
+}
+#footer {
+	margin: 10px;
+	background: #242424;
+	color: #dfdfdf;
+	padding: 20px 0;
+}
+#footer-info .second-line {
+	margin: 15px 0;
+}
+#footer-info {
+	text-align: center;
+}
+.social-link {
+	font-size: 16px;
+	color: #dfdfdf;
+	padding-left: 45px;
+	line-height: 27px;
+}
+.social-link:hover {
+	color: #fff;
+	text-decoration: none;
+}
+.social-link.facebook {
+	background: url(images/face.png) no-repeat scroll 0 4px transparent;
+}
+.social-link.twitter {
+	background: url(images/twi.png) no-repeat scroll 0 4px transparent;
+}
+.social-link.instagram {
+	background: url(images/inst.png) no-repeat scroll 0 4px transparent;
+}
+.social-link.pinterest {
+	background: url(images/pin.png) no-repeat scroll 0 4px transparent;
+}
+.social-link.googleplus {
+	background: url(images/g+.png) no-repeat scroll 0 4px transparent;
+}
+.footer-menu a {
+	color: #dfdfdf;
+	font-family: 'Raleway', serif;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 27px;
+}
+#social-links a {
+	text-indent: -99999px;
+}
+#social-links {
+	text-align: center;
+}
+#social-links a > span {
+	display: none;
+}
+#footer-info {
+	padding-bottom: 20px;
+	font-size: 14px;
+}
+#footer-menu-1, #footer-menu-2, #social-links {
+	padding-bottom: 20px;
+}
+#footer-menu-1, #footer-menu-2 {
+	width: 50%;
+	float: left;
+	padding: 20px;
+	text-align: center;
+}
 @media (min-width: 768px) {
     .navbar .navbar-nav {
         display: inline-block;
         float: none;
         vertical-align: top;
     }
-
     .navbar .navbar-collapse {
         text-align: center;
     }
+	#cart:hover .widget_shopping_cart {
+		display: block;
+	}
+	#cart {
+		right: 40px;
+	}
+	#footer-info {
+		box-sizing: border-box;
+		text-align: left;
+		width: 39%;
+		float: left;
+		padding: 50px 0 50px 50px;
+	}
+	#footer-menu-1, #footer-menu-2, #social-links {
+		float: none;
+		display: inline-block;
+		box-sizing: border-box;
+		width: 20%;
+		padding: 50px 0 50px 50px;
+		text-align: left;
+	}
+	#social-links {
+		text-align: left;
+	}
+	#social-links a {
+		text-indent: 0;
+		display: block;
+	}
+	#social-links a > span {
+		display: inline;
+	}
+	.social-link {
+		padding-left: 25px;
+	}
 }
-
 .navbar-default .navbar-nav .menu-item>a {
 	text-transform: uppercase;
 	font-family: 'Raleway', serif;
@@ -66,7 +239,6 @@ h1.site-title {
 	color: #2d2d2d;
 	padding: 30px 15px;
 }
-
 .navbar-default .navbar-toggle {
 	border-radius: 50%;
 	padding: 17px 14px;
