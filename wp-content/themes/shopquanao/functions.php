@@ -7,6 +7,7 @@
  * @since shopquanao 1.0
  */
 
+require_once dirname(__FILE__) . '/inc/widgets/init.php';
 // Set up the content width value based on the theme's design and stylesheet.
 if ( ! isset( $content_width ) )
 	$content_width = 625;
@@ -300,7 +301,7 @@ function theme_settings_page(){
 }
 function add_theme_menu_item()
 {
-	add_menu_page("Theme Options", "Theme Options", "manage_options", "theme-panel", "theme_settings_page", null, 63);
+	add_menu_page("Theme Options", "Social URLs", "manage_options", "theme-panel", "theme_settings_page", null, 63);
 }
 add_action("admin_menu", "add_theme_menu_item");
 function display_twitter_element()

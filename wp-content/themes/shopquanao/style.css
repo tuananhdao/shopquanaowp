@@ -37,8 +37,11 @@ ul, li, ol {
 	margin: 0;
 	padding: 0;
 }
+a {
+	color: inherit;
+	text-decoration: underline;
+}
 a:hover, a:active, a:focus {
-	text-decoration: none;
 	color: inherit;
 }
 .clear {
@@ -56,6 +59,10 @@ a:hover, a:active, a:focus {
 	font-family: 'Raleway', serif;
 	font-weight: 600;
 }
+.raleway-medium {
+	font-family: 'Raleway', serif;
+	font-weight: 500;
+}
 .fairplay-regular {
 	font-family: 'Playfair Display', serif;
 	font-weight: 400;
@@ -63,6 +70,12 @@ a:hover, a:active, a:focus {
 .fairplay-bold {
 	font-family: 'Playfair Display', serif;
 	font-weight: 700;
+	font-style: normal;
+}
+.fairplay-italic {
+	font-family: 'Playfair Display', serif;
+	font-weight: 400;
+	font-style: italic;
 }
 .hidden {
 	display: none;
@@ -134,29 +147,28 @@ h1.site-title {
 	text-align: center;
 }
 .social-link {
-	font-size: 16px;
-	color: #dfdfdf;
-	padding-left: 45px;
-	line-height: 27px;
+	padding-right: 45px;
+	background-position: center center;
+	background-repeat: no-repeat;
 }
 .social-link:hover {
 	color: #fff;
 	text-decoration: none;
 }
 .social-link.facebook {
-	background: url(images/face.png) no-repeat scroll 0 4px transparent;
+	background-image: url(images/face.png);
 }
 .social-link.twitter {
-	background: url(images/twi.png) no-repeat scroll 0 4px transparent;
+	background-image: url(images/twi.png);
 }
 .social-link.instagram {
-	background: url(images/inst.png) no-repeat scroll 0 4px transparent;
+	background-image: url(images/inst.png);
 }
 .social-link.pinterest {
-	background: url(images/pin.png) no-repeat scroll 0 4px transparent;
+	background-image: url(images/pin.png);
 }
 .social-link.googleplus {
-	background: url(images/g+.png) no-repeat scroll 0 4px transparent;
+	background-image: url(images/g+.png);
 }
 .footer-menu a {
 	color: #dfdfdf;
@@ -164,6 +176,7 @@ h1.site-title {
 	font-weight: 600;
 	font-size: 16px;
 	line-height: 27px;
+	text-decoration: none;
 }
 #social-links a {
 	text-indent: -99999px;
@@ -175,17 +188,101 @@ h1.site-title {
 	display: none;
 }
 #footer-info {
-	padding-bottom: 20px;
+	padding-bottom: 40px;
 	font-size: 14px;
 }
 #footer-menu-1, #footer-menu-2, #social-links {
-	padding-bottom: 20px;
+	padding-bottom: 40px;
 }
 #footer-menu-1, #footer-menu-2 {
 	width: 50%;
 	float: left;
-	padding: 20px;
+	padding: 20px 20px 50px;
 	text-align: center;
+}
+#subscription-widget h2.subscription-title {
+	text-align: center;
+	margin: 30px 0;
+	color: #242424;
+}
+#subscription-widget .subscription-description {
+	text-align: center;
+	width: 680px;
+	max-width: 90%;
+	margin: 0 auto;
+	color: #7e7e7e;
+	letter-spacing: 0.5px;
+}
+#subscription-widget .subcription-form {
+	margin: 30px auto 50px;
+	width: 560px;
+	max-width: 95%;
+	height: 59px;
+	background-color: #fff;
+	border-radius: 28px;
+	position: relative;
+}
+#subscription-widget #subscription-email, #subscription-widget #subscription-email:focus {
+	box-sizing: border-box;
+	border: none;
+	border-color: transparent;
+	outline: none;
+	padding: 14px 20px;
+	border-radius: 28px;
+	font-size: 16px;
+	color: #b1b0b0;
+	line-height: 30px;
+	width: 100%;
+	float: left;
+	padding-right: 140px;
+}
+#subscription-widget #subscription-submit {
+	box-sizing: border-box;
+	background-color: #e2574c;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 16px;
+	border: 0 none;
+	border-color: transparent;
+	line-height: 19px;
+	padding: 15px 20px;
+	float: right;
+	margin: 5px;
+    border-radius: 28px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 129px;
+}
+.navbar {
+	margin-bottom: 0;
+	background-color: #fff;
+	border: 0 none;
+	border-radius: 0;
+}
+#slogan-widget {
+	margin: 100px 50px;
+}
+#slogan-widget .slogan-line-1 b {
+	font-weight: 700;
+	font-style: normal;
+}
+#slogan-widget .slogan-line-1 {
+	text-align: center;
+	color: #242424;
+	font-size: 50px;
+	margin-bottom: 30px;
+}
+#slogan-widget .slogan-line-2 {
+	text-align: center;
+	color: #7e7e7e;
+	max-width: 721px;
+	margin: 0 auto;
+	font-size: 18px;
+	letter-spacing: 1px;
+}
+#slogan-widget .slogan-line-2 a {
+	color: #e2574c;
 }
 @media (min-width: 768px) {
     .navbar .navbar-nav {
@@ -229,6 +326,7 @@ h1.site-title {
 	}
 	.social-link {
 		padding-left: 25px;
+		background-position: 0 4px;
 	}
 }
 .navbar-default .navbar-nav .menu-item>a {
@@ -238,6 +336,7 @@ h1.site-title {
 	font-size: 16px;
 	color: #2d2d2d;
 	padding: 30px 15px;
+	text-decoration: none;
 }
 .navbar-default .navbar-toggle {
 	border-radius: 50%;
@@ -250,4 +349,12 @@ h1.site-title {
 .navbar-toggle .icon-bar {
 	width: 18px;
 	color: #2d2d2d;
+}
+#subscription-widget {
+	background-color: #f2f2f2;
+	margin: 10px 10px 0;
+	padding: 20px;
+}
+#subscription-widget h2.subscription-title {
+	font-size: 36px;
 }

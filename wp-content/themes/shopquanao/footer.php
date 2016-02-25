@@ -15,8 +15,8 @@
 		<div id="footer-menu-2" class="footer-menu"><?php wp_nav_menu( array( 'menu' => 'footer-menu-2' ) ); ?></div>
 		<div id="footer-info" class="fairplay-regular">
 			<div class="first-line">Ⓒ2015 - badcdcdcdcđ<br />
-			bdbdvdvdvdvd & kđjfkjdf</div>
-			<div class="second-line fairplay-bold">0123-456-789, info@niteco.se</div>
+			Dbm ldmf <a href="http://google.com.vn">bdbdvdvdvdvd</a> & <a href="http://google.com.vn">kđjfkjdf</a></div>
+			<div class="second-line fairplay-bold">0123-456-789, <a href="mailto:info@niteco.se">info@niteco.se</a></div>
 			<div class="third-line">USA, Sanfrancisco<br />1575 Djfjdm nnmnsdbfns kisjdf hù jbdf</div>
 		</div>
 		<div id="social-links" class="footer-menu">
