@@ -88,7 +88,7 @@ function shopquanao_widgets_init() {
 	register_sidebar( array(
 		'name' => __( 'Home Header 2' ),
 		'id' => 'sidebar-2',
-		'description' => __( 'Appears on Homepage below Home Header 1' ),
+		'description' => __( 'Appears on Homepage below Home Header 1. Will not be shown on mobile view.' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h3 class="widget-title">',
@@ -352,3 +352,31 @@ function display_theme_panel_fields()
 }
 
 add_action("admin_init", "display_theme_panel_fields");
+
+/* WooCommerce Hooks */
+add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_category_name', 10 );
+function woocommerce_show_product_loop_category_name(){
+	wc_get_template( 'loop/category-name.php' );
+}
+
+add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_out_of_stock_flash', 10 );
+function woocommerce_show_product_loop_out_of_stock_flash() {
+	wc_get_template( 'loop/sold-out-flash.php' );
+}
+
+remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail');
+add_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail2', 5);
+
+function woocommerce_template_loop_product_thumbnail2() {
+	?>
+		<div class="loop-product-thumbnail-container"><?php echo woocommerce_get_product_thumbnail(); ?></div>
+	<?php
+}
+
+function extract_numbers($string)
+{
+preg_match_all('/([\d]+)/', $string, $match);
+ 
+return $match[0];
+}
