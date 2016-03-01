@@ -24,9 +24,6 @@ function shopquanao_setup() {
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
 	
-	// Loads our main stylesheet.
-	wp_enqueue_style( 'twentytwelve-style', get_stylesheet_uri() );
-	
 	// Disable Admin bar on frontend
 	show_admin_bar( false );
 
@@ -44,6 +41,11 @@ function shopquanao_setup() {
 }
 add_action( 'after_setup_theme', 'shopquanao_setup' );
 
+function shopquanao_scripts() {
+	// Loads our main stylesheet.
+	wp_enqueue_style( 'shopquanao-style', get_stylesheet_uri() );
+}
+add_action('wp_enqueue_scripts', 'shopquanao_scripts', 15);
 
 /**
  * Filter the page title.
@@ -379,4 +381,30 @@ function extract_numbers($string)
 preg_match_all('/([\d]+)/', $string, $match);
  
 return $match[0];
+}
+remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar' );
+remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+add_action( 'woocommerce_after_shop_loop', 'woocommerce_result_count', 5 );
+
+function ksd_category_title() {
+	$cate = get_queried_object();
+	$cat_id = $cate->term_id;
+	
+	$category = get_category($cat_id);
+	$temp_id = $category->term_id;
+	while (true)
+	{
+		$parent_cat_id = $category->category_parent;
+		if ($parent_cat_id == 0)
+			break;
+		
+		$category = get_category($parent_cat_id);
+		$temp_id = $parent_cat_id;
+	}
+	
+	$toppest_category = get_category($temp_id);
+	
+	return $toppest_category->cat_name;
 }

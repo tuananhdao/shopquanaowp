@@ -1,0 +1,38 @@
+#wooc_sclist {
+	width: 100%;
+	text-align: center;
+}
+#wooc_sclist li {
+	display: inline;
+}
+#wooc_sclist li a {
+	font-family: 'Playfair Display', serif;
+	font-weight: 400;
+	color: #242424;
+	font-size: 16px;
+	line-height: 16px;
+	padding: 7px 15px;
+	text-decoration: none;
+}
+#wooc_sclist li a:hover {
+	color: #7e7e7e;
+}
+#wooc_sclist li.current a {
+	color: #7e7e7e;
+	border: 1px solid #e3e3e3;
+	border-radius: 18px;
+}
+.desktop-only {
+	display: none;
+}
+.mobile-only {
+	display: block;
+}
+@media (min-width: 768px) {
+	.desktop-only {
+		display: block;
+	}
+	.mobile-only {
+		display: none;
+	}
+}

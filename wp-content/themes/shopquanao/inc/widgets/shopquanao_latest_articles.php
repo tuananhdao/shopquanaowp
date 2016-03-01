@@ -64,9 +64,11 @@ class shopquanao_latest_articles extends WP_widget{
 						$feat_image = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) );
 					?>
 						<div class="latest-article">
-							<img class="latest-article-thumbnail" src="<?php echo $feat_image; ?>" title="<?php echo get_the_title(); ?>" alt="<?php echo get_the_title(); ?>" />
-							<a href="<?php echo get_the_permalink(); ?>"><h3 class="latest-article-title fairplay-regular"><?php echo get_the_title(); ?></h3></a>
-							<div class="latest-article-date"><?php echo get_the_date('M d, Y'); ?></div>
+							<a href="<?php echo get_the_permalink(); ?>">
+								<img class="latest-article-thumbnail" src="<?php echo $feat_image; ?>" title="<?php echo get_the_title(); ?>" alt="<?php echo get_the_title(); ?>" />
+								<h3 class="latest-article-title fairplay-regular"><?php echo get_the_title(); ?></h3>
+								<div class="latest-article-date"><?php echo get_the_date('M d, Y'); ?></div>
+							</a>
 						</div>
 					<?php
 					}

@@ -36,18 +36,29 @@ class shopquanao_home_categories extends WP_widget{
 		$categories = $categories[0];
 		
 		echo $before_widget; ?>
-			<div id="home-categories-widget">
+			<div id="home-categories-widget" class="desktop-only">
 				<?php
-				foreach ($categories as $category)
+				foreach ($categories as $index => $category)
 				{
 					$term = get_term_by( 'id', $category, 'product_cat' );
 					$cat_name = $term->name;
+					$cat_url = get_category_link($category);
 					
 					$thumbnail_id = get_woocommerce_term_meta( $category, 'thumbnail_id', true );
 					$cat_image = wp_get_attachment_url( $thumbnail_id );
+					if ($index % 3 == 0) {
+						?>
+						<div class="line-break"></div>
+						<?php
+					}
 					?>
-					
+						<div class="home-cat-block-container" id="home-cat-block-<?php echo $category; ?>">
+							<a href="<?php echo $cat_url; ?>" class="home-cat-block" style="background-image: url(<?php echo $cat_image; ?>);">
+								<h4 class="home-cat-block-title raleway-semibold"><?php echo $cat_name; ?></h4>
+							</a>
+						</div>
 					<?php
+						
 				}?>
 				<div class="clear"></div>
 			</div>

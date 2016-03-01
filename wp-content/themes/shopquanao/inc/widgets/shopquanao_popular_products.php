@@ -53,14 +53,18 @@ class shopquanao_popular_products extends WP_widget{
 					);
 
 					$loop = new WP_Query( $args );
-					if ( $loop->have_posts() ) {
+					if ( $loop->have_posts() ) { ?>
+					<ul class="products">
+					<?php
 					while ( $loop->have_posts() ) : $loop->the_post();
 					woocommerce_get_template_part( 'content', 'product' );
 					endwhile;
 					} else {
 					echo __( 'No products found' );
 					}
-
+					?>
+					</ul>
+					<?php
 					wp_reset_query();
 
 				?>
