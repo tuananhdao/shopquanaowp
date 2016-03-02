@@ -88,13 +88,13 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 		</tbody>
 	</table>
 
-	<input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->id ); ?>" />
+	<input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->id ); ?>" class="big-input" />
 
 	<?php if ( $quantites_required ) : ?>
 
 		<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
-		<button type="submit" class="single_add_to_cart_button button alt"><?php echo $product->single_add_to_cart_text(); ?></button>
+		<button type="submit" class="single_add_to_cart_button button alt big-input"><?php echo $product->single_add_to_cart_text(); ?></button>
 
 		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 

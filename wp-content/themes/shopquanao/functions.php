@@ -7,7 +7,12 @@
  * @since shopquanao 1.0
  */
 
+// call widgets & hooked functions
 require_once dirname(__FILE__) . '/inc/widgets/init.php';
+require_once dirname(__FILE__) . '/inc/functions/template_functions.php';
+require_once dirname(__FILE__) . '/inc/functions/admin_social_urls_config.php';
+require_once dirname(__FILE__) . '/inc/functions/hooks.php';
+
 // Set up the content width value based on the theme's design and stylesheet.
 if ( ! isset( $content_width ) )
 	$content_width = 625;
@@ -42,7 +47,21 @@ function shopquanao_setup() {
 add_action( 'after_setup_theme', 'shopquanao_setup' );
 
 function shopquanao_scripts() {
-	// Loads our main stylesheet.
+	// Add Google Fonts
+	wp_enqueue_style( 'font-raleway', 'https://fonts.googleapis.com/css?family=Raleway:400,500,600' );
+	wp_enqueue_style( 'font-playfair-display', 'https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700' );
+	wp_enqueue_style( 'font-open-sans', 'https://fonts.googleapis.com/css?family=Open+Sans:300' );
+	
+	//flex slider
+	if (is_product())
+	{
+		wp_enqueue_style( 'flex-slider-css', get_template_directory_uri() . '/css/flexslider.css' );
+		wp_enqueue_script( 'flex-slider-js', get_template_directory_uri() . '/js/jquery.flexslider-min.js', array(), '2.6.0', true );
+		wp_enqueue_script( 'flex-slider-config', get_template_directory_uri() . '/js/flex-config.js', array(), '2.6.0', true );
+	}
+	
+	// Loads main stylesheet and script
+	wp_enqueue_script( 'main-js', get_template_directory_uri() . '/js/main.js', array(), '1.0.0', true );
 	wp_enqueue_style( 'shopquanao-style', get_stylesheet_uri() );
 }
 add_action('wp_enqueue_scripts', 'shopquanao_scripts', 15);
@@ -268,125 +287,17 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 	}
 }
 
-if ( ! function_exists( 'is_woocommerce_activated' ) ) {
-	function is_woocommerce_activated() {
-		return class_exists( 'woocommerce' ) ? true : false;
-	}
+function is_woocommerce_activated() {
+	return in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) );
 }
-
-if ( ! function_exists( 'shopquanao_cart_link' ) ) {
-	function shopquanao_cart_link() {
-		?>
-			<a class="cart-contents" href="<?php echo esc_url( WC()->cart->get_cart_url() ); ?>" title="<?php _e( 'View your shopping cart'); ?>">
-				<span class="amount"><?php //echo wp_kses_data( WC()->cart->get_cart_subtotal() ); ?></span> <span class="count"><?php echo wp_kses_data( sprintf( _n( '%d', '%d', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ) );?></span>
-			</a>
-		<?php
-	}
-}
-
-/*
- * For the Theme Setting Page
- */
-function theme_settings_page(){
-	?>
-	    <div class="wrap">
-	    <h1>Theme Panel</h1>
-	    <form method="post" action="options.php">
-	        <?php
-	            settings_fields("social-config-section");
-	            do_settings_sections("theme-options");      
-	            submit_button(); 
-	        ?>          
-	    </form>
-		</div>
-	<?php
-}
-function add_theme_menu_item()
-{
-	add_menu_page("Theme Options", "Social URLs", "manage_options", "theme-panel", "theme_settings_page", null, 63);
-}
-add_action("admin_menu", "add_theme_menu_item");
-function display_twitter_element()
-{
-	?>
-    	<input type="text" name="twitter_url" id="twitter_url" value="<?php echo get_option('twitter_url'); ?>" />
-    <?php
-}
-function display_facebook_element()
-{
-	?>
-    	<input type="text" name="facebook_url" id="facebook_url" value="<?php echo get_option('facebook_url'); ?>" />
-    <?php
-}
-function display_instagram_element()
-{
-	?>
-		<input type="text" name="instagram_url" id="instagram_url" value="<?php echo get_option('instagram_url'); ?>" />
-	<?php
-}
-function display_pinterest_element()
-{
-	?>
-		<input type="text" name="pinterest_url" id="pinterest_url" value="<?php echo get_option('pinterest_url'); ?>" />
-	<?php
-}
-function display_googleplus_element()
-{
-	?>
-		<input type="text" name="googleplus_url" id="googleplus_url" value="<?php echo get_option('googleplus_url'); ?>" />
-	<?php
-}
-function display_theme_panel_fields()
-{
-	add_settings_section("social-config-section", "All Settings", null, "theme-options");
-	
-	add_settings_field("facebook_url", "Facebook Profile Url", "display_facebook_element", "theme-options", "social-config-section");
-	add_settings_field("twitter_url", "Twitter Profile Url", "display_twitter_element", "theme-options", "social-config-section");
-    add_settings_field("instagram_url", "Instagram Profile Url", "display_instagram_element", "theme-options", "social-config-section");
-    add_settings_field("pinterest_url", "Pinterest Profile Url", "display_pinterest_element", "theme-options", "social-config-section");
-    add_settings_field("googleplus_url", "Google Plus Profile Url", "display_googleplus_element", "theme-options", "social-config-section");
-
-    register_setting("social-config-section", "facebook_url");
-	register_setting("social-config-section", "twitter_url");
-	register_setting("social-config-section", "instagram_url");
-	register_setting("social-config-section", "pinterest_url");
-	register_setting("social-config-section", "googleplus_url");
-}
-
-add_action("admin_init", "display_theme_panel_fields");
 
 /* WooCommerce Hooks */
-add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_category_name', 10 );
-function woocommerce_show_product_loop_category_name(){
-	wc_get_template( 'loop/category-name.php' );
-}
-
-add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_out_of_stock_flash', 10 );
-function woocommerce_show_product_loop_out_of_stock_flash() {
-	wc_get_template( 'loop/sold-out-flash.php' );
-}
-
-remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
-remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail');
-add_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail2', 5);
-
-function woocommerce_template_loop_product_thumbnail2() {
-	?>
-		<div class="loop-product-thumbnail-container"><?php echo woocommerce_get_product_thumbnail(); ?></div>
-	<?php
-}
 
 function extract_numbers($string)
 {
-preg_match_all('/([\d]+)/', $string, $match);
- 
-return $match[0];
+	preg_match_all('/([\d]+)/', $string, $match);
+	return $match[0];
 }
-remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar' );
-remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
-remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
-remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
-add_action( 'woocommerce_after_shop_loop', 'woocommerce_result_count', 5 );
 
 function ksd_category_title() {
 	$cate = get_queried_object();

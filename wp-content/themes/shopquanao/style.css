@@ -77,15 +77,23 @@ a:hover, a:active, a:focus {
 	font-weight: 400;
 	font-style: italic;
 }
+.fairplay-italic b {
+	font-family: 'Playfair Display', serif;
+	font-weight: 700;
+	font-style: normal;
+}
 .hidden {
 	display: none;
+}
+.right {
+	float: right;
 }
 #page {
 	margin-top: 80px;
 	overflow: hidden;
 }
 #content {
-	margin: 60px 0 90px;
+	margin: 60px 0;
 }
 #header {
 	width: 100%;
@@ -372,6 +380,9 @@ h1.site-title {
 	border-top: 1px solid #eeeeee;
 	width: 100%;
 }
+.woocommerce .products ul, .woocommerce ul.products {
+	margin: 0;
+}
 .woocommerce ul.products li.product a {
 	text-decoration: none;
 }
@@ -486,6 +497,148 @@ li.product .price {
 	float: none;
 	color: #7e7e7e;
 }
+.related.products {
+	border-top: 1px solid #eeeeee;
+	padding-top: 30px;
+}
+.related.products h2 {
+	font-size: 20px;
+	text-align: center;
+}
+.woocommerce div.product div.images li, .thumbnail-altenative {
+	background-color: #f8f8f8;
+}
+.woocommerce div.product div.images img.wp-post-image {
+	background-color: #f8f8f8;
+	width: auto;
+	min-width: 50%;
+	max-width: 100%;
+	display: block;
+	margin: 0 auto;
+}
+.single-product #content {
+	margin-top: 0;
+}
+.flex-control-paging li a {
+	background-color: #dcdcdc;
+	border: 0 none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	opacity: 0.5;
+}
+.flex-control-paging li a:hover {
+	opacity: 0.95;
+	background-color: #dcdcdc;
+}
+.flex-control-paging li a.flex-active, .flex-control-paging li a.flex-active:hover {
+	background-color: #e2574c;
+	border: 0 none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	opacity: 1;
+	cursor: pointer;
+}
+.stylist {
+	color: #e2574c;
+	font-size: 20px;
+}
+.woocommerce div.product .product_title {
+	color: #242424;
+	font-size: 46px;
+	font-family: 'fairplay-regular';
+	font-weight: 400;
+	line-height: 60px;
+}
+.product .description {
+	color: #7e7e7e;
+	font-size: 16px;
+	letter-spacing: 0.5px;
+	line-height: 27px;
+}
+.woocommerce div.product p.price {
+	overflow: hidden;
+}
+.woocommerce div.product p.price ins{
+	color: #e2574c;
+	font-size: 30px;
+	float: left;
+	margin-right: 10px;
+	text-decoration: none;
+}
+.woocommerce div.product p.price del {
+	color: #b1b0b0;
+	font-size: 22px;
+	line-height: 37px;
+}
+.big-input {
+	border: 1px solid #ebebeb;
+	border-radius: 22px;
+	color: #7e7e7e;
+	font-family: 'Playfair Display', serif;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 20px;
+	padding: 8px 40px 8px 20px;
+	appearance:none;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+}
+select.big-input {
+	background: url(images/select_arrow.png) no-repeat scroll center right #f8f8f8;
+}
+.product .cart .quantity input.qty  {
+	border: 1px solid #ebebeb;
+	border-radius: 22px;
+	color: #7e7e7e;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 20px;
+	padding: 11px 0px 11px 15px;
+	background-color: #f8f8f8;
+	width: 72px;
+}
+.product .offers {
+	float: left;
+}
+.product form.cart {
+	float: left;
+	clear: right;
+}
+.product .cart .quantity input.qty:focus {
+	outline: none;
+}
+.product .product_meta {
+	margin-bottom: 20px;
+}
+.product .product_meta > span {
+	width: 100%;
+	display: block;
+}
+.single-product-navigator {
+	margin: 56px 0;
+	font-size: 16px;
+	color: #242424;
+}
+.single-product-navigator a {
+	text-decoration: none;
+}
+.easingslider-pagination .easingslider-icon {
+	width: 14px;
+	height: 14px;
+	background: #fff;
+	opacity: 0.5;
+	border-radius: 50%;
+	margin: 0 5px;
+}
+.easingslider-pagination .easingslider-icon.active {
+	background: #fff;
+	opacity: 1;
+}
+.easingslider-pagination.inside.bottom-center {
+	bottom: 20px;
+}
 @media (min-width: 768px) {
 	.desktop-only {
 		display: block;
@@ -594,6 +747,12 @@ li.product .price {
 	}
 	#home-cat-block-6, #home-cat-block-7 {
 		width: 50%;
+	}
+	.related.products {
+		border-top: 0 none;
+	}
+	.woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary {
+		padding-right: 40px;
 	}
 }
 .navbar-default .navbar-nav .menu-item>a {
