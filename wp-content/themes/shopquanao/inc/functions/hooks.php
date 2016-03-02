@@ -30,4 +30,5 @@ add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_p
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 24 );
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_navigator', 1 );
+add_action( 'woocommerce_share', 'woocommerce_template_single_share', 1 );
 ?>

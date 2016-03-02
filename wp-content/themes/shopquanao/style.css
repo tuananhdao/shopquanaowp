@@ -639,6 +639,44 @@ select.big-input {
 .easingslider-pagination.inside.bottom-center {
 	bottom: 20px;
 }
+#single-product-share {
+	width: 100%;
+	margin: 10px 0;
+	overflow: hidden;
+}
+#single-product-share .share-button {
+	display: inline-block;
+	border: 1px solid #ebebeb;
+	border-radius: 4px;
+	height: 24px;
+	padding: 0 15px;
+	vertical-align: middle;
+}
+#single-product-share .share-button.custom-tweet-button {
+	font-size: 12px;
+	color: #6e6e6e;
+	padding-left: 30px;
+	line-height: 22px;
+	text-decoration: none;
+	background: url(images/twitter-icon.png) no-repeat scroll 7px center transparent;
+}
+span[data-pin-log="button_pinit_bookmarklet"], span[data-pin-log="button_pinit_bookmarklet"]:hover {
+	display: inline-block;
+	border: 1px solid #ebebeb;
+	border-radius: 4px;
+	height: 24px;
+	padding: 0 15px;
+	width: 40px;
+	vertical-align: middle;
+	box-shadow: none;
+}
+#___plusone_0 {
+	display: inline-block;
+	border-radius: 4px;
+	height: 24px;
+	padding: 0 15px;
+	vertical-align: middle!important;
+}
 @media (min-width: 768px) {
 	.desktop-only {
 		display: block;

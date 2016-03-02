@@ -30,7 +30,7 @@ function woocommerce_template_single_navigator() {
 	$terms = get_the_terms( $post->ID, 'product_cat' );
 	$the_term = end($terms);
 	?>
-	<div class="single-product-navigator fairplay-regular">
+	<div class="single-product-navigator fairplay-regular desktop-only">
 		<a href="<?php echo get_term_link($the_term->term_id); ?>" class="back">Back to: <?php echo $the_term->name; ?></a>
 		<span class="right">
 			<?php
@@ -54,4 +54,13 @@ function woocommerce_template_single_navigator() {
 function woocommerce_template_loop_product_thumbnail2() { ?>
 		<div class="loop-product-thumbnail-container"><?php echo woocommerce_get_product_thumbnail(); ?></div>
 <?php }
-?>
+
+function woocommerce_template_single_share() { ?>
+	<div id="single-product-share">
+		<div class="share-button fb-share-button" data-href="<?php echo get_the_permalink(); ?>" data-layout="icon_link"></div>
+		<a class="share-button custom-tweet-button" href="https://twitter.com/share" target="blank">Tweet</a>
+		<a data-pin-do="buttonPin" data-pin-color="white" href="https://www.pinterest.com/pin/create/button/?url=<?php echo get_the_permalink(); ?>&media=&description=Next%20stop%3A%20Pinterest"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_white_20.png" /></a>
+		<div class="g-plusone share-button" data-annotation="none" data-href="<?php echo get_the_permalink(); ?>"></div>
+	</div>
+<?php	
+} ?>
