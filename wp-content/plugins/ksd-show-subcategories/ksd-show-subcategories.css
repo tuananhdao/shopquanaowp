@@ -28,6 +28,26 @@
 .mobile-only {
 	display: block;
 }
+#wooc_sclist_mobile {
+	text-align: center;
+}
+#wooc_sclist_mobile select {
+	border: 1px solid #ebebeb;
+	border-radius: 22px;
+	color: #7e7e7e;
+	font-family: 'Playfair Display', serif;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 20px;
+	padding: 8px 40px 8px 20px;
+	appearance:none;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+	background: url(images/select_arrow.png) no-repeat scroll center right #f8f8f8;
+}
+#wooc_sclist_mobile select:focus {
+	outline: 0 none;
+}
 @media (min-width: 768px) {
 	.desktop-only {
 		display: block;
