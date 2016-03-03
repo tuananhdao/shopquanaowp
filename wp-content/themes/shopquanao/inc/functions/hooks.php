@@ -28,7 +28,6 @@ remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_pr
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 25 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
-add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 24 );
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_navigator', 1 );
 add_action( 'woocommerce_share', 'woocommerce_template_single_share', 1 );
 ?>

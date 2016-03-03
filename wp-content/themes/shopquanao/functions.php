@@ -319,3 +319,21 @@ function ksd_category_title() {
 	
 	return $toppest_category->cat_name;
 }
+
+wp_deregister_script('wc-add-to-cart-variation');
+wp_register_script( 'wc-add-to-cart-variation', get_template_directory_uri() . '/js/add-to-cart-variation' . $suffix . '.js', array( 'jquery', 'wp-util' ) );
+wp_enqueue_script('wc-add-to-cart-variation');
+
+add_filter('woocommerce_available_variation', function ($value, $object = null, $variation = null) {
+    if ($value['price_html'] == '') {
+        $value['price_html'] = '<span class="price">' . $variation->get_price_html() . '</span>';
+    }
+    return $value;
+}, 10, 3);
+
+add_filter('woocommerce_dropdown_variation_attribute_options_args', function( $args ) {
+	if (isset($args['name'])) {
+		$args['show_option_none'] = wc_attribute_label( str_replace( 'pa_', '', $args['name'] ) );
+	}
+	return $args;
+}, 10, 1 );
