@@ -677,6 +677,9 @@ span[data-pin-log="button_pinit_bookmarklet"], span[data-pin-log="button_pinit_b
 	padding: 0 15px;
 	vertical-align: middle!important;
 }
+.single-product .product-type-variable .offers {
+	display: none;
+}
 @media (min-width: 768px) {
 	.desktop-only {
 		display: block;
