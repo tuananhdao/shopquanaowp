@@ -762,9 +762,13 @@ span[data-pin-log="button_pinit_bookmarklet"], span[data-pin-log="button_pinit_b
 	text-align: center;
 	padding: 0 10px;
 }
-.woocommerce-page #content, .single-format-standard #content {
+.woocommerce-page #content {
 	margin-left: 10px;
 	margin-right: 10px;
+}
+.single-format-standard #content {
+	margin-left: 100px;
+	margin-right: 100px;
 }
 .single-post h1.entry-title {
     color: #242424;
