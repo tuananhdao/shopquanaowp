@@ -18,6 +18,9 @@ html {
 	overflow: -moz-scrollbars-vertical; 
 	overflow-y: scroll;
 }
+*:focus {
+	outline: none;
+}
 div {
 	max-width: 100%;
 }
@@ -772,10 +775,16 @@ span[data-pin-log="button_pinit_bookmarklet"], span[data-pin-log="button_pinit_b
 }
 .single-post .wp-post-image {
 	display: block;
-	margin: 0 auto;
+	margin: 0 auto 40px;
 }
 .single-post .nav-single span.nav-next {
 	float: right;
+}
+.single-post .entry-content {
+	color: #7e7e7e;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    line-height: 27px;
 }
 @media (min-width: 768px) {
 	.desktop-only {
