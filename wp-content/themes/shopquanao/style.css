@@ -749,12 +749,33 @@ span[data-pin-log="button_pinit_bookmarklet"], span[data-pin-log="button_pinit_b
     display: inline;
     font-family: 'raleway';
 }
-.woocommerce .woocommerce-message {
+.woocommerce .woocommerce-message, .woocommerce .woocommerce-error {
 	margin-bottom: 0!important;
+}
+.woocommerce .woocommerce-info {
+	margin-top: 50px!important;
 }
 .woocommerce div.product div.summary {
 	text-align: center;
 	padding: 0 10px;
+}
+.woocommerce-page #content, .single-format-standard #content {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.single-post h1.entry-title {
+    color: #242424;
+    font-size: 46px;
+    font-family: 'fairplay-regular';
+    font-weight: 400;
+    line-height: 60px;
+}
+.single-post .wp-post-image {
+	display: block;
+	margin: 0 auto;
+}
+.single-post .nav-single span.nav-next {
+	float: right;
 }
 @media (min-width: 768px) {
 	.desktop-only {

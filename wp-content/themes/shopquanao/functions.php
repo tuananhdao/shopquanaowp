@@ -7,11 +7,12 @@
  * @since shopquanao 1.0
  */
 
-// call widgets & hooked functions
+// call widgets, filters & hooked functions
 require_once dirname(__FILE__) . '/inc/widgets/init.php';
 require_once dirname(__FILE__) . '/inc/functions/template_functions.php';
 require_once dirname(__FILE__) . '/inc/functions/admin_social_urls_config.php';
 require_once dirname(__FILE__) . '/inc/functions/hooks.php';
+require_once dirname(__FILE__) . '/inc/functions/filters.php';
 
 // Set up the content width value based on the theme's design and stylesheet.
 if ( ! isset( $content_width ) )
@@ -90,7 +91,7 @@ function shopquanao_wp_title( $title, $sep ) {
 
 	return $title;
 }
-add_filter( 'wp_title', 'shopquanao_wp_title', 10, 2 );
+
 
 /**
  * Register sidebars.
@@ -127,6 +128,10 @@ function shopquanao_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'shopquanao_widgets_init' );
+
+//wp_deregister_script('wc-add-to-cart-variation');
+//wp_register_script( 'wc-add-to-cart-variation', get_template_directory_uri() . '/js/add-to-cart-variation' . $suffix . '.js', array( 'jquery', 'wp-util' ) );
+//wp_enqueue_script('wc-add-to-cart-variation');
 
 class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 	/**
@@ -320,20 +325,16 @@ function ksd_category_title() {
 	return $toppest_category->cat_name;
 }
 
-wp_deregister_script('wc-add-to-cart-variation');
-wp_register_script( 'wc-add-to-cart-variation', get_template_directory_uri() . '/js/add-to-cart-variation' . $suffix . '.js', array( 'jquery', 'wp-util' ) );
-wp_enqueue_script('wc-add-to-cart-variation');
-
-add_filter('woocommerce_available_variation', function ($value, $object = null, $variation = null) {
+function woocommerce_variation_price_html_fix ($value, $object = null, $variation = null) {
     if ($value['price_html'] == '') {
         $value['price_html'] = '<span class="price">' . $variation->get_price_html() . '</span>';
     }
     return $value;
-}, 10, 3);
+}
 
-add_filter('woocommerce_dropdown_variation_attribute_options_args', function( $args ) {
-	if (isset($args['name'])) {
-		$args['show_option_none'] = wc_attribute_label( str_replace( 'pa_', '', $args['name'] ) );
+function woocommerce_dropdown_variation_show_option_none_fix( $args ) {
+	if (isset($args['attribute'])) {
+		$args['show_option_none'] = wc_attribute_label( $args['attribute'] );
 	}
 	return $args;
-}, 10, 1 );
+}
